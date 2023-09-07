@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: center;
+    min-height: 100vh;
+    background: #2d86f3;
+}
+
+.container {
+    width: 250px;
+    padding: 10px;
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+
+header span {
+    background-color: #fafafa;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 0.5rem;
+}
+
+.dateNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.currentDate {
+    font-weight: 500;
+}
+
+.calendar li {
+    width: calc(100% / 7);
+    text-align: center;
+    padding: 7px;
+}
+
+.calendar ul {
+    list-style: none;
+}
+
+.weeks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weeks li {
+    font-weight: 500;
+}
+
+.days {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.days li {}
+
+.active {
+    background-color: #0f5fc0;
+    color: white;
+    border-radius: 50%;
+}
+
+.footerFocus {
+    display: flex;
+    justify-content: space-between;
+    border-top: solid 1px black;
+    padding-top: 5px;
+}
+
+.timeSet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeSet span {
+    background-color: #fafafa;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+    padding: 3px;
+    margin: auto 5px;
+    font-size: 1rem;
+}
+
+.focusBtn {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #fafafa;
+    padding-right: 5px;
+}
