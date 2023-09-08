@@ -13,19 +13,19 @@
 <body>
     <div class="container">
         <header>
-            <p class="currentDay">Thursday, September 7</p>
+            <p class="day-week">Thursday, September 7</p>
             <span class="material-symbols-outlined">
                 expand_more
             </span>
         </header>
 
         <div class="dateNav">
-            <p class="currentDate">September 2023</p>
+            <p class="month-year">September 2023</p>
             <div class="icon">
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-outlined" id="prev-month">
                     arrow_drop_up
                 </span>
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-outlined" id="next-month">
                     arrow_drop_down
                 </span>
             </div>
@@ -42,15 +42,20 @@
                 <li>Sa</li>
             </ul>
             <ul class="days">
+                <li class="inactive">1</li>
+                <li class="inactive">2</li>
+                <li class="inactive">3</li>
+                <li class="inactive">4</li>
+                <li class="inactive">5</li>
+                <li>6</li>
+                <li>7</li>
                 <li>1</li>
                 <li>2</li>
-                <li>3</li>
+                <li class="active">3</li>
                 <li>4</li>
                 <li>5</li>
                 <li>6</li>
-                <li class="active">7</li>
-            </ul>
-            <ul class="days">
+                <li>7</li>
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
@@ -58,8 +63,6 @@
                 <li>5</li>
                 <li>6</li>
                 <li>7</li>
-            </ul>
-            <ul class="days">
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
@@ -67,8 +70,6 @@
                 <li>5</li>
                 <li>6</li>
                 <li>7</li>
-            </ul>
-            <ul class="days">
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
@@ -76,24 +77,23 @@
                 <li>5</li>
                 <li>6</li>
                 <li>7</li>
+                <li class="inactive">1</li>
+                <li class="inactive">2</li>
+                <li class="inactive">3</li>
+                <li class="inactive">4</li>
+                <li class="inactive">5</li>
+                <li class="inactive">6</li>
+                <li class="inactive">7</li>
             </ul>
-            <ul class="days">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-            </ul>
+
         </div>
 
         <div class="footerFocus">
             <div class="timeSet">
                 <span class="material-symbols-outlined">
-                    add 
+                    add
                 </span>
-                <p><strong>30</strong>mins</p>
+                <p><strong>30</strong> mins</p>
                 <span class="material-symbols-outlined">
                     remove
                 </span>
