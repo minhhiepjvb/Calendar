@@ -1,110 +1,111 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const dayList = document.querySelector(".days");
-    const monthYear = document.querySelector(".month-year");
-    const dayWeek = document.querySelector(".day-week");
-    const prevMonth = document.getElementById("prev-month");
-    const nextMonth = document.getElementById("next-month")
 
-    function renderCalendar(year, month) {
+const dayList = document.querySelector(".days");
+const monthYear = document.querySelector(".month-year");
+const dayWeek = document.querySelector(".day-week");
+const prevMonth = document.getElementById("prev-month");
+const nextMonth = document.getElementById("next-month")
 
-        clearCalendar()
+//Get current date
+const today = new Date();
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth();
 
-        //Declare firt date of month
-        const firstDayOfMonth = new Date(year, month, 1);
+//Add dayweek into header
+dayWeek.textContent = `${today.toLocaleString("default", { weekday: "long" })}, ${today.toLocaleString("default", { month: "long" })} ${today.getDate()}`;
 
-        //Get last date of month
-        const lastDayOfMonth = new Date(year, month + 1, 0);
+renderCalendar(currentYear, currentMonth);
 
-        //show month-year
-        showMonthYear(firstDayOfMonth)
+function renderCalendar(year, month) {
 
-        //Get fist day of week
-        const firstDayOfWeek = new Date(firstDayOfMonth);
-        firstDayOfWeek.setDate(1 - firstDayOfWeek.getDay());
+    clearCalendar()
 
-        //Declare current date and make a loop from first day of month 
-        let currentDate = new Date(firstDayOfWeek);
+    //Declare firt date of month
+    const firstDayOfMonth = new Date(year, month, 1);
 
-        //Loop date of Month
-        while (currentDate <= lastDayOfMonth) {
-            const listItem = document.createElement("li");
-            listItem.textContent = currentDate.getDate();
+    //Get last date of month
+    const lastDayOfMonth = new Date(year, month + 1, 0);
 
-            //Check current day
-            if (isToday(currentDate)) {
-                listItem.classList.add("active");
-            }
+    //show month-year
+    showMonthYear(firstDayOfMonth)
 
-            dayList.appendChild(listItem);
+    //Get fist day of week
+    const firstDayOfWeek = new Date(firstDayOfMonth);
+    firstDayOfWeek.setDate(1 - firstDayOfWeek.getDay());
 
-            //Move to next day
-            currentDate.setDate(currentDate.getDate() + 1);
+    //Declare current date
+    let currentDate = new Date(firstDayOfWeek);
 
-            //Check date belong to month
-            if (currentDate.getMonth() === month) {
-                listItem.classList.remove("inactive");
-            } else {
-                listItem.classList.add("inactive")
-            }
+    //Create date of month
 
+
+    while (currentDate <= lastDayOfMonth) {
+        const listItem = document.createElement("li");
+        listItem.textContent = currentDate.getDate();
+
+        //Check current day
+        if (isToday(currentDate)) {
+            listItem.classList.add("active");
         }
+
+        dayList.appendChild(listItem)
+
+        //Check date of month
+        if (currentDate.getMonth() > month || currentDate.getMonth() < month) {
+            listItem.classList.add("inactive");
+        }
+
+        //Move to next day
+        currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    function showMonthYear(date) {
-        const monthDisplay = date.toLocaleString("default", { month: "long" });
-        const yearDisplay = date.getFullYear();
-        monthYear.textContent = `${monthDisplay} ${yearDisplay}`;
+}
+
+//Show month and year 
+function showMonthYear(date) {
+    const monthDisplay = date.toLocaleString("default", { month: "long" });
+    const yearDisplay = date.getFullYear();
+    monthYear.textContent = `${monthDisplay} ${yearDisplay}`;
+}
+
+//clear content inside calendar
+function clearCalendar() {
+    dayList.innerHTML = "";
+}
+
+//check current day
+function isToday(date) {
+    const today = new Date();
+    return (date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate()
+    );
+}
+
+//Click prev month
+prevMonth.addEventListener("click", function () {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
     }
+    renderCalendar(currentYear, currentMonth);
+});
 
-    function clearCalendar() {
-        //Delete old date
-        dayList.innerHTML = "";
+//click next month
+nextMonth.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
     }
-
-    function isToday(date) {
-        const today = new Date();
-        return (date.getFullYear() === today.getFullYear() &&
-            date.getMonth() === today.getMonth() &&
-            date.getDate() === today.getDate()
-        );
-    }
-
-    //Get current date
-    let today = new Date();
-    let currentYear = today.getFullYear();
-    let currentMonth = today.getMonth();
-
-    //Add dayweek into header
-    dayWeek.textContent = `${today.toLocaleString("default", { weekday: "long" })}, ${today.toLocaleString("default", { month: "long" })} ${today.getDate()}`;
-
     renderCalendar(currentYear, currentMonth);
 
-    //Click prev month
-    prevMonth.addEventListener("click", function () {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
-        }
-        renderCalendar(currentYear, currentMonth);
-    });
+});
 
-    //click next month
-    nextMonth.addEventListener("click", function () {
-        currentMonth++;
-        if (currentMonth > 11) {
-            year++;
-            currentMonth = 0;
-        }
-        renderCalendar(currentYear, currentMonth);
-    });
-
-    //click to back currentdate
-    dayWeek.addEventListener("click", function () {
-        const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = today.getMonth();
-        renderCalendar(currentYear, currentMonth);
-    });
-
+//click current day
+dayWeek.addEventListener("click", () => {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+    renderCalendar(currentYear, currentMonth);
 });

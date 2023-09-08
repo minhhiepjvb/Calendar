@@ -56,6 +56,15 @@ header p:hover {
 
 }
 
+.dateNav .month-year {
+    font-weight: 500;
+    flex: 1;
+}
+
+.dateNav .month-year:hover {
+    background-color: #e2e1e7;
+}
+
 .dateNav #prev-month:hover {
     background-color: #e2e1e7;
 }
@@ -64,9 +73,6 @@ header p:hover {
     background-color: #e2e1e7;
 }
 
-.month-year {
-    font-weight: 500;
-}
 
 .calendar {
     padding: 5px;
