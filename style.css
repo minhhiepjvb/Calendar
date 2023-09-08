@@ -44,12 +44,24 @@ header span {
     font-size: 0.5rem;
 }
 
+header p:hover {
+    color: #89898f;
+}
+
 .dateNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
 
+}
+
+.dateNav #prev-month:hover {
+    background-color: #e2e1e7;
+}
+
+.dateNav #next-month:hover {
+    background-color: #e2e1e7;
 }
 
 .month-year {

@@ -70,12 +70,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //Get current date
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
+    let today = new Date();
+    let currentYear = today.getFullYear();
+    let currentMonth = today.getMonth();
 
     //Add dayweek into header
     dayWeek.textContent = `${today.toLocaleString("default", { weekday: "long" })}, ${today.toLocaleString("default", { month: "long" })} ${today.getDate()}`;
 
     renderCalendar(currentYear, currentMonth);
+
+    //Click prev month
+    prevMonth.addEventListener("click", function () {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentYear, currentMonth);
+    });
+
+    //click next month
+    nextMonth.addEventListener("click", function () {
+        currentMonth++;
+        if (currentMonth > 11) {
+            year++;
+            currentMonth = 0;
+        }
+        renderCalendar(currentYear, currentMonth);
+    });
+
+    //click to back currentdate
+    dayWeek.addEventListener("click", function () {
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth();
+        renderCalendar(currentYear, currentMonth);
+    });
+
 });
