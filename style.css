@@ -25,7 +25,7 @@ body {
     background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
     border-radius: 5px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-
+    user-select: none;
 }
 
 header {
@@ -46,6 +46,7 @@ header span {
 
 header p:hover {
     color: #89898f;
+    cursor: pointer;
 }
 
 .dateNav {
@@ -63,16 +64,22 @@ header p:hover {
 
 .dateNav .month-year:hover {
     background-color: #e2e1e7;
+    cursor: pointer;
 }
 
 .dateNav #prev-month:hover {
     background-color: #e2e1e7;
+    cursor: pointer;
 }
 
 .dateNav #next-month:hover {
     background-color: #e2e1e7;
+    cursor: pointer;
 }
 
+/* .date-calendar {
+    display: none;
+} */
 
 .calendar {
     padding: 5px;
@@ -131,6 +138,7 @@ header p:hover {
 .days li:hover::before {
     color: white;
     background-color: #e2e1e7;
+    cursor: pointer;
 }
 
 .footerFocus {
@@ -161,4 +169,8 @@ header p:hover {
     border-radius: 3px;
     background-color: #fafafa;
     padding-right: 5px;
+}
+
+.month-calendar {
+    display: none;
 }

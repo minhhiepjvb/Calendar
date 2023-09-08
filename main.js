@@ -23,9 +23,11 @@ function renderCalendar(year, month) {
     const firstDayOfMonth = new Date(year, month, 1);
 
     //Get last date of month
-    const lastDayOfMonth = new Date(year, month + 1, 0);
+    const lastDateOfMonth = new Date(year, month + 1, 0);
 
-    //show month-year
+
+
+    //show current month-year
     showMonthYear(firstDayOfMonth)
 
     //Get fist day of week
@@ -38,7 +40,7 @@ function renderCalendar(year, month) {
     //Create date of month
 
 
-    while (currentDate <= lastDayOfMonth) {
+    while (currentDate <= lastDateOfMonth) {
         const listItem = document.createElement("li");
         listItem.textContent = currentDate.getDate();
 
@@ -48,6 +50,8 @@ function renderCalendar(year, month) {
         }
 
         dayList.appendChild(listItem)
+
+
 
         //Check date of month
         if (currentDate.getMonth() > month || currentDate.getMonth() < month) {
@@ -99,7 +103,6 @@ nextMonth.addEventListener("click", () => {
         currentYear++;
     }
     renderCalendar(currentYear, currentMonth);
-
 });
 
 //click current day
