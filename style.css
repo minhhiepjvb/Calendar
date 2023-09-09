@@ -81,6 +81,7 @@ header p:hover {
     display: none;
 } */
 
+/* Date Calendar */
 .calendar {
     padding: 5px;
 }
@@ -141,6 +142,56 @@ header p:hover {
     cursor: pointer;
 }
 
+/* Month Calendar */
+.month-calendar {
+    display: none;
+}
+
+.calendar .months li {
+    position: relative;
+    width: calc(100% / 4);
+}
+
+.months {
+    margin-bottom: 30px;
+}
+
+.months li {
+    z-index: 1;
+    margin-top: 30px;
+}
+
+.months li.inactive {
+    color: rgb(218, 218, 218);
+}
+
+.months li.active {
+    color: rgb(255, 255, 255);
+}
+
+.months li::before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.months li.active::before {
+    background-color: #2d86f3;
+}
+
+.months li:hover::before {
+    color: white;
+    background-color: #e2e1e7;
+    cursor: pointer;
+}
+
+/* footer */
 .footerFocus {
     display: flex;
     justify-content: space-between;
@@ -169,8 +220,4 @@ header p:hover {
     border-radius: 3px;
     background-color: #fafafa;
     padding-right: 5px;
-}
-
-.month-calendar {
-    display: none;
 }

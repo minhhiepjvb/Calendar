@@ -2,7 +2,9 @@ const dayList = document.querySelector(".days");
 const monthYear = document.querySelector(".month-year");
 const dayWeek = document.querySelector(".day-week");
 const prevMonth = document.getElementById("prev-month");
-const nextMonth = document.getElementById("next-month")
+const nextMonth = document.getElementById("next-month");
+const monthCalendar = document.querySelector(".month-calendar");
+const dateCalendar = document.querySelector(".date-calendar");
 prevNextIcon = document.querySelectorAll(".icon span");
 
 //Get current date
@@ -12,6 +14,7 @@ let currentMonth = date.getMonth();
 
 const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];
+
 //Add dayweek into header
 dayWeek.textContent = `${date.toLocaleString("default", { weekday: "long" })}, ${date.toLocaleString("default", { month: "long" })} ${date.getDate()}`;
 
@@ -48,6 +51,16 @@ function renderCalendar() {
 
 renderCalendar()
 
+//Render month
+
+function renderMonthCalendar() {
+    dateCalendar.style.display = "none";
+    monthCalendar.style.display = "block";
+}
+
+monthYear.addEventListener("click", () => {
+    renderMonthCalendar();
+})
 //Click prev month
 prevMonth.addEventListener("click", function () {
     currentMonth--;
