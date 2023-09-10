@@ -89,9 +89,11 @@ function renderMonthCalendar() {
     onlyYear.innerText = `${currentYear}`;
 }
 
+// Show month calendar
 monthYear.addEventListener("click", () => {
     renderMonthCalendar();
 })
+
 //Click prev month
 prevMonth.addEventListener("click", function () {
     currentMonth--;
