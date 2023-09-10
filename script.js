@@ -1,5 +1,7 @@
 const dayList = document.querySelector(".days");
+const monthList = document.querySelector(".months");
 const monthYear = document.querySelector(".month-year");
+const onlyYear = document.getElementById("only-year")
 const dayWeek = document.querySelector(".day-week");
 const prevMonth = document.getElementById("prev-month");
 const nextMonth = document.getElementById("next-month");
@@ -14,6 +16,9 @@ let currentMonth = date.getMonth();
 
 const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];
+
+const shortMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 //Add dayweek into header
 dayWeek.textContent = `${date.toLocaleString("default", { weekday: "long" })}, ${date.toLocaleString("default", { month: "long" })} ${date.getDate()}`;
@@ -51,11 +56,37 @@ function renderCalendar() {
 
 renderCalendar()
 
-//Render month
+//Render month of year
 
 function renderMonthCalendar() {
     dateCalendar.style.display = "none";
     monthCalendar.style.display = "block";
+
+    const CELLS = 16; // month will fixed in 16 cell
+    let liTag = "";
+
+
+    for (let i = 0; i < 12; i++) {
+        const isCurrentMonth = i === date.getMonth();
+        const monthYearCheck = new Date(currentYear, i, 1).getFullYear();
+
+        if (monthYearCheck === currentYear) {
+            liTag += `<li class="${isCurrentMonth ? "active" : ""}">${shortMonths[i]}</li>`;
+        }
+        else {
+            liTag += `<li class="inactive">${shortMonths[i]}</li>`;
+        }
+    }
+
+    // Fill the remaining cells with "inactive" months
+    for (let i = 0; i < CELLS - 12; i++) {
+        const nextYear = currentYear + 1; // Get next month
+        const nextMonth = i + 1; // Start at first month of year
+        liTag += `<li class="inactive"}">${shortMonths[nextMonth - 1]}</li>`;
+    }
+
+    monthList.innerHTML = liTag;
+    onlyYear.innerText = `${currentYear}`;
 }
 
 monthYear.addEventListener("click", () => {

@@ -152,13 +152,11 @@ header p:hover {
     width: calc(100% / 4);
 }
 
-.months {
-    margin-bottom: 30px;
-}
 
 .months li {
     z-index: 1;
-    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 .months li.inactive {
@@ -172,8 +170,8 @@ header p:hover {
 .months li::before {
     position: absolute;
     content: "";
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     top: 50%;
     left: 50%;
     z-index: -1;
