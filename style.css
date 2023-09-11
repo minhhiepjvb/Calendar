@@ -271,6 +271,16 @@ header p:hover {
     padding-right: 5px;
 }
 
+.timeSet span:hover {
+    background-color: #e2e1e7;
+    cursor: pointer;
+}
+
+.focusBtn:hover {
+    background-color: #e2e1e7;
+    cursor: pointer;
+}
+
 /* CSS for sliding in */
 .slide-in {
     transform: translateX(0%);
