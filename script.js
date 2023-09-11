@@ -72,23 +72,17 @@ function renderMonthCalendar(year, month) {
     let liTag = "";
 
 
-    for (let i = 0; i < 12; i++) {
-        const isCurrentMonth = i === month;
-        const monthYearCheck = new Date(year, i, 1).getFullYear();
 
-        if (monthYearCheck === year) {
-            liTag += `<li class="${isCurrentMonth ? "active" : ""}" data-month="${i}">${shortMonths[i]}</li>`;
-        }
-        else {
-            liTag += `<li class="inactive" data-month="${i}">${shortMonths[i]}</li>`;
-        }
+    for (let i = 0; i < 12; i++) {
+        const isCurrentMonth = i === month && year === new Date().getFullYear();
+        liTag += `<li class="${isCurrentMonth ? "active" : ""}" data-month="${i}">${shortMonths[i]}</li>`;
     }
 
     // Fill the remaining cells with "inactive" months
     for (let i = 0; i < CELLS - 12; i++) {
         const nextYear = year + 1; // Get next month
         const nextMonth = i + 1; // Start at first month of year
-        liTag += `<li class="inactive"}">${shortMonths[nextMonth - 1]}</li>`;
+        liTag += `<li class="inactive" data-month="${i}" data-year="${nextYear}">${shortMonths[nextMonth - 1]}</li>`;
     }
 
     monthList.innerHTML = liTag;
@@ -98,8 +92,9 @@ function renderMonthCalendar(year, month) {
     monthItems.forEach((monthItem) => {
         monthItem.addEventListener("click", () => {
             const selectedMonth = parseInt(monthItem.getAttribute("data-month"));
+            const yearOfSelectedMonth = parseInt(monthItem.getAttribute("data-year") ?? new Date().getFullYear());
             // render month of year
-            renderCalendar(year, selectedMonth);
+            renderCalendar(yearOfSelectedMonth, selectedMonth);
             dateCalendar.style.display = "block";
             monthCalendar.style.display = "none";
             yearCalendar.style.display = "none";
@@ -114,6 +109,8 @@ function renderYearCalendar(centerYear) {
     monthCalendar.style.display = "none";
     yearCalendar.style.display = "block";
 
+    const today = new Date();
+
     const yearsToShow = 16; // year will be fixed in 16 cell
     const startYear = centerYear - Math.floor(yearsToShow / 2) + 4;
     const endYear = centerYear + Math.ceil(yearsToShow / 2) + 4;
@@ -122,7 +119,7 @@ function renderYearCalendar(centerYear) {
 
     for (let i = startYear; i < endYear; i++) {
         if (i === currentYear) {
-            liTag += `<li class="active" data-year="${i}">${i}</li>`;
+            liTag += `<li class="${currentYear === today.getFullYear() ? 'active' : ''}" data-year="${i}">${i}</li>`;
         } else {
             // decade current and year i
             const currentDecade = Math.floor(currentYear / 10) * 10;
@@ -144,7 +141,7 @@ function renderYearCalendar(centerYear) {
         yearItem.addEventListener("click", () => {
             const selectedYear = parseInt(yearItem.getAttribute("data-year"));
             // render month selected of year
-            renderMonthCalendar(selectedYear);
+            renderMonthCalendar(selectedYear, new Date().getMonth());
             dateCalendar.style.display = "none";
             monthCalendar.style.display = "block";
             yearCalendar.style.display = "none";
@@ -154,7 +151,7 @@ function renderYearCalendar(centerYear) {
 
 // Show year
 onlyYear.addEventListener("click", () => {
-    renderYearCalendar(currentYear, currentYear);
+    renderYearCalendar(currentYear);
 });
 
 // Show month calendar
@@ -205,10 +202,11 @@ prevDecade.addEventListener("click", function () {
 //click next decade
 nextDecade.addEventListener("click", () => {
     currentYear += 10;
-    const prevDecadeItems = document.querySelectorAll(`.years li[data-year]`);
-    prevDecadeItems.forEach((yearItem) => {
-        yearItem.classList.remove("active");
-    });
+
+    // const prevDecadeItems = document.querySelectorAll(`.years li[data-year]`);
+    // prevDecadeItems.forEach((yearItem) => {
+    //     yearItem.classList.remove("active");
+    // });
 
     renderYearCalendar(currentYear);
 });
