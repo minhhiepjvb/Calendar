@@ -19,8 +19,11 @@ function updateTimer() {
 // Set countdown
 function startOrResetCountdown() {
     if (!isRunning) {
-        minutes = 25;
-        seconds = 0;
+        if (minutes === 0 && seconds === 0) {
+            // Reset to default time
+            minutes = 25;
+            seconds = 0;
+        }
         updateTimer();
         countdown = setInterval(function () {
             if (minutes === 0 && seconds === 0) {
