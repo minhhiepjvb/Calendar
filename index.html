@@ -19,100 +19,103 @@
             </span>
         </header>
 
-        <div class="date-calendar">
-            <div class="dateNav">
-                <p class="month-year">September 2024</p>
-                <div class="icon">
-                    <span class="material-symbols-outlined" id="prev-month">
-                        arrow_drop_up
-                    </span>
-                    <span class="material-symbols-outlined" id="next-month">
-                        arrow_drop_down
-                    </span>
+        <div class="calendar-container">
+            <div class="date-calendar">
+                <div class="dateNav">
+                    <p class="month-year">September 2024</p>
+                    <div class="icon">
+                        <span class="material-symbols-outlined" id="prev-month">
+                            arrow_drop_up
+                        </span>
+                        <span class="material-symbols-outlined" id="next-month">
+                            arrow_drop_down
+                        </span>
+                    </div>
+                </div>
+
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Su</li>
+                        <li>Mo</li>
+                        <li>Tu</li>
+                        <li>We</li>
+                        <li>Th</li>
+                        <li>Fr</li>
+                        <li>Sa</li>
+                    </ul>
+                    <ul class="days"></ul>
                 </div>
             </div>
 
-            <div class="calendar">
-                <ul class="weeks">
-                    <li>Su</li>
-                    <li>Mo</li>
-                    <li>Tu</li>
-                    <li>We</li>
-                    <li>Th</li>
-                    <li>Fr</li>
-                    <li>Sa</li>
-                </ul>
-                <ul class="days"></ul>
+            <div class="month-calendar">
+                <div class="dateNav">
+                    <p class="month-year" id="only-year">2026</p>
+                    <div class="icon">
+                        <span class="material-symbols-outlined prev" id="prev-year">
+                            arrow_drop_up
+                        </span>
+                        <span class="material-symbols-outlined next" id="next-year">
+                            arrow_drop_down
+                        </span>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="months">
+                        <li class="inactive">jan</li>
+                        <li class="inactive">feb</li>
+                        <li class="inactive">mar</li>
+                        <li class="inactive">apr</li>
+                        <li>jan</li>
+                        <li>feb</li>
+                        <li>mar</li>
+                        <li>apr</li>
+                        <li>jan</li>
+                        <li>feb</li>
+                        <li>mar</li>
+                        <li>apr</li>
+                        <li>jan</li>
+                        <li>feb</li>
+                        <li>mar</li>
+                        <li>apr</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="year-calendar">
+                <div class="dateNav">
+                    <p class="year-year inactive" id="decade">2026 - 2029</p>
+                    <div class="icon">
+                        <span class="material-symbols-outlined prev" id="prev-decade">
+                            arrow_drop_up
+                        </span>
+                        <span class="material-symbols-outlined next" id="next-decade">
+                            arrow_drop_down
+                        </span>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="years">
+                        <li class="inactive">2019</li>
+                        <li class="inactive">2020</li>
+                        <li class="inactive">2021</li>
+                        <li class="inactive">2022</li>
+                        <li>2023</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                        <li>2024</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="month-calendar">
-            <div class="dateNav">
-                <p class="month-year" id="only-year">2026</p>
-                <div class="icon">
-                    <span class="material-symbols-outlined prev" id="prev-year">
-                        arrow_drop_up
-                    </span>
-                    <span class="material-symbols-outlined next" id="next-year">
-                        arrow_drop_down
-                    </span>
-                </div>
-            </div>
-            <div class="calendar">
-                <ul class="months">
-                    <li class="inactive">jan</li>
-                    <li class="inactive">feb</li>
-                    <li class="inactive">mar</li>
-                    <li class="inactive">apr</li>
-                    <li>jan</li>
-                    <li>feb</li>
-                    <li>mar</li>
-                    <li>apr</li>
-                    <li>jan</li>
-                    <li>feb</li>
-                    <li>mar</li>
-                    <li>apr</li>
-                    <li>jan</li>
-                    <li>feb</li>
-                    <li>mar</li>
-                    <li>apr</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="year-calendar">
-            <div class="dateNav">
-                <p class="year-year" id="year-from">2026 - 2029</p>
-                <div class="icon">
-                    <span class="material-symbols-outlined prev" id="prev-disable">
-                        arrow_drop_up
-                    </span>
-                    <span class="material-symbols-outlined next" id="next-disable">
-                        arrow_drop_down
-                    </span>
-                </div>
-            </div>
-            <div class="calendar">
-                <ul class="years">
-                    <li class="inactive">2019</li>
-                    <li class="inactive">2020</li>
-                    <li class="inactive">2021</li>
-                    <li class="inactive">2022</li>
-                    <li>2023</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                    <li>2024</li>
-                </ul>
-            </div>
-        </div>
 
         <div class="footerFocus">
             <div class="timeSet">

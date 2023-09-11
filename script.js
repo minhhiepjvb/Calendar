@@ -2,29 +2,32 @@ const dayList = document.querySelector(".days");
 const monthList = document.querySelector(".months");
 const yearList = document.querySelector(".years");
 const monthYear = document.querySelector(".month-year");
-const onlyYear = document.getElementById("only-year")
+const onlyYear = document.getElementById("only-year");
+const decade = document.getElementById("decade");
 const dayWeek = document.querySelector(".day-week");
-const prevMonth = document.getElementById("prev-month");
-const nextMonth = document.getElementById("next-month");
-const prevYear = document.getElementById("prev-year")
-const nextYear = document.getElementById("next-year");
 const monthCalendar = document.querySelector(".month-calendar");
 const dateCalendar = document.querySelector(".date-calendar");
 const yearCalendar = document.querySelector(".year-calendar");
-prevNextIcon = document.querySelectorAll(".icon span");
+const prevMonth = document.getElementById("prev-month");
+const nextMonth = document.getElementById("next-month");
+const prevYear = document.getElementById("prev-year");
+const nextYear = document.getElementById("next-year");
+const prevDecade = document.getElementById("prev-decade");
+const nextDecade = document.getElementById("next-decade");
 
 //Get current date
 const date = new Date();
 let currentYear = date.getFullYear();
 let currentMonth = date.getMonth();
 
+//Array month
 const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];
 
 const shortMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
     "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-//Add dayweek into header
+//Add today into header
 dayWeek.textContent = `${date.toLocaleString("default", { weekday: "long" })}, ${date.toLocaleString("default", { month: "long" })} ${date.getDate()}`;
 
 
@@ -111,25 +114,36 @@ function renderYearCalendar(centerYear) {
     monthCalendar.style.display = "none";
     yearCalendar.style.display = "block";
 
-    const yearsToShow = 16; // year to show
-    const yearsBeforeCenter = Math.floor(yearsToShow / 2); // year before center year
-    const yearsAfterCenter = yearsToShow - yearsBeforeCenter - 1; // year behind center year
-
+    const yearsToShow = 16; // year will be fixed in 16 cell
+    const startYear = centerYear - Math.floor(yearsToShow / 2) + 4;
+    const endYear = centerYear + Math.ceil(yearsToShow / 2) + 4;
+    console.log(startYear);
     let liTag = "";
 
-    for (let i = centerYear - yearsBeforeCenter; i <= centerYear + yearsAfterCenter; i++) {
-        const isCurrentYear = i === currentYear;
-        liTag += `<li class="${isCurrentYear ? "active" : ""}" data-year="${i}">${i}</li>`;
+    for (let i = startYear; i < endYear; i++) {
+        if (i === currentYear) {
+            liTag += `<li class="active" data-year="${i}">${i}</li>`;
+        } else {
+            // decade current and year i
+            const currentDecade = Math.floor(currentYear / 10) * 10;
+            const yearDecade = Math.floor(i / 10) * 10;
+
+            // Check i if belong to decade
+            const isActive = yearDecade >= currentDecade && yearDecade < currentDecade + 10;
+
+            liTag += `<li class="${isActive ? '' : 'inactive'}" data-year="${i}">${i}</li>`;
+        }
     }
 
     yearList.innerHTML = liTag;
+    decade.innerText = `${startYear + 1} - ${startYear + 10} `;
 
-    // Show month
+    // Show  selected month
     const yearItems = document.querySelectorAll(".years li");
     yearItems.forEach((yearItem) => {
         yearItem.addEventListener("click", () => {
             const selectedYear = parseInt(yearItem.getAttribute("data-year"));
-            // render month of year
+            // render month selected of year
             renderMonthCalendar(selectedYear);
             dateCalendar.style.display = "none";
             monthCalendar.style.display = "block";
@@ -137,9 +151,10 @@ function renderYearCalendar(centerYear) {
         });
     });
 }
+
 // Show year
 onlyYear.addEventListener("click", () => {
-    renderYearCalendar(currentYear);
+    renderYearCalendar(currentYear, currentYear);
 });
 
 // Show month calendar
@@ -181,7 +196,25 @@ nextYear.addEventListener("click", () => {
     renderMonthCalendar(currentYear, currentMonth);
 });
 
+//Click prev decade
+prevDecade.addEventListener("click", function () {
+    currentYear -= 10;
+    renderYearCalendar(currentYear);
+});
+
+//click next decade
+nextDecade.addEventListener("click", () => {
+    currentYear += 10;
+    const prevDecadeItems = document.querySelectorAll(`.years li[data-year]`);
+    prevDecadeItems.forEach((yearItem) => {
+        yearItem.classList.remove("active");
+    });
+
+    renderYearCalendar(currentYear);
+});
+
 //click current day
 dayWeek.addEventListener("click", () => {
     location.reload();
 });
+
