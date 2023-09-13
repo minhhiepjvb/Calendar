@@ -30,12 +30,12 @@ body {
 }
 
 .prev:hover {
-    color: #cfced3;
+    color: #89898f;
     cursor: pointer;
 }
 
 .next:hover {
-    color: #cfced3;
+    color: #89898f;
     cursor: pointer;
 }
 
@@ -97,7 +97,7 @@ header p:hover {
 }
 
 .dateNav .month-year:hover {
-    background-color: #e2e1e7;
+    color: #89898f;
     cursor: pointer;
 }
 
