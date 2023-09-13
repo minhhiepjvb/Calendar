@@ -26,15 +26,16 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0.46);
     user-select: none;
+    transform: scale(1.8);
 }
 
 .prev:hover {
-    background-color: #e2e1e7;
+    color: #cfced3;
     cursor: pointer;
 }
 
 .next:hover {
-    background-color: #e2e1e7;
+    color: #cfced3;
     cursor: pointer;
 }
 
@@ -42,6 +43,25 @@ body {
     color: rgb(218, 218, 218);
 }
 
+li.active::before {
+    background-color: #2d86f3;
+}
+
+li:hover::before {
+    color: white;
+    background-color: #e2e1e7;
+    cursor: pointer;
+}
+
+li.active:hover::before {
+    background-color: #1276f1;
+}
+
+li.active {
+    color: rgb(255, 255, 255);
+}
+
+/* header */
 header {
     display: flex;
     justify-content: space-between;
@@ -116,13 +136,9 @@ header p:hover {
     margin-top: 20px;
 }
 
-.days li.inactive {
+/* .days li.inactive {
     color: rgb(218, 218, 218);
-}
-
-.days li.active {
-    color: rgb(255, 255, 255);
-}
+} */
 
 .days li::before {
     position: absolute;
@@ -136,15 +152,6 @@ header p:hover {
     transform: translate(-50%, -50%);
 }
 
-.days li.active::before {
-    background-color: #2d86f3;
-}
-
-.days li:hover::before {
-    color: white;
-    background-color: #e2e1e7;
-    cursor: pointer;
-}
 
 /* Month Calendar */
 .month-calendar {
@@ -163,13 +170,13 @@ header p:hover {
     margin-top: 15px;
 }
 
-.months li.inactive {
+/* .months li.inactive {
     color: rgb(218, 218, 218);
-}
+} */
 
-.months li.active {
+/* .months li.active {
     color: rgb(255, 255, 255);
-}
+} */
 
 .months li::before {
     position: absolute;
@@ -183,7 +190,7 @@ header p:hover {
     transform: translate(-50%, -50%);
 }
 
-.months li.active::before {
+/* .months li.active::before {
     background-color: #2d86f3;
 }
 
@@ -191,7 +198,7 @@ header p:hover {
     color: white;
     background-color: #e2e1e7;
     cursor: pointer;
-}
+} */
 
 /* Year Calendar */
 .year-calendar {
@@ -210,13 +217,13 @@ header p:hover {
     margin-top: 15px;
 }
 
-.years li.inactive {
+/* .years li.inactive {
     color: rgb(218, 218, 218);
-}
+} */
 
-.years li.active {
+/* .years li.active {
     color: rgb(255, 255, 255);
-}
+} */
 
 .years li::before {
     position: absolute;
@@ -230,7 +237,7 @@ header p:hover {
     transform: translate(-50%, -50%);
 }
 
-.years li.active::before {
+/* .years li.active::before {
     background-color: #2d86f3;
 }
 
@@ -238,7 +245,7 @@ header p:hover {
     color: white;
     background-color: #e2e1e7;
     cursor: pointer;
-}
+} */
 
 /* footer */
 .footerFocus {
